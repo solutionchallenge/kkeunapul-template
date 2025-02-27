@@ -41,6 +41,7 @@ jobs:
         run: |
           IMAGE_NAME="gcr.io/${{ vars.VAR_GCR_PROJECT_ID }}/${{ github.event.repository.name }}-${{ matrix.architecture }}"
           docker buildx build \
+            --provenance=false \
             --platform linux/${{ matrix.architecture }} \
             --tag "$IMAGE_NAME:latest" \
             --tag "$IMAGE_NAME:${{ github.sha }}" \
